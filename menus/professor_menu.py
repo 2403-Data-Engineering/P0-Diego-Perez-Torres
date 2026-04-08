@@ -1,4 +1,3 @@
-import objects.professor as prof
 import db_professor_manager as dbp
 
 def delete_professor():

@@ -1,4 +1,5 @@
 import objects.classObj as classObj
+import db_class_manager as dbc
 dummyClass = classObj.Class(1,"Biology 101","billy bob")
 classes = [dummyClass]
 
@@ -22,10 +23,9 @@ def delete_class():
         break
 
 def update_class_data(id: int):
-    new_class_name = input("What is the class's name?: ").strip()
-    new_professor_name = input("What is the professor's name?: ").strip()
-    newClass = classObj.Class(id,new_class_name,new_professor_name)
-    classes[id-1] = newClass
+    class_name = input("What is the class's name?: ").strip()
+    professor_id = input("What is the professor's ID?: ").strip()
+    dbc.update_class_by_id(class_name,professor_id)
 
 def update_class():
     while True:
@@ -44,15 +44,12 @@ def update_class():
         break 
 
 def view_classes():
-    for i in classes:
-        #improve readability
-        print(vars(i))
+    dbc.view_all_classes()
 
 def create_class():
     class_name = input("What is the class's name?: ").strip()
-    professor_name = input("What is the professor's name?: ").strip()
-    newClass = classObj.Class(len(classes)+1,class_name,professor_name)
-    classes.append(newClass)
+    professor_id = input("What is the professor's ID?: ").strip()
+    dbc.insert_professor(class_name,professor_id)
 
 def display_class_menu():
     print("~~~~~~~~~~Class Menu~~~~~~~~~~")
@@ -60,9 +57,6 @@ def display_class_menu():
     print("2. View all classes")
     print("3. Update a class's details")
     print("4. Delete a class")
-    print("5. Enroll a student to a class")
-    print("6. Drop a student from a class")
-    print("7. View all students in a specific class")
     print("0. Go back to previous menu")
 
 def class_menu():
@@ -77,13 +71,7 @@ def class_menu():
         elif choice == '3':
             update_class()
         elif choice == '4':
-            delete_class()
-        elif choice == '5':
-            print("not implemented yet")
-        elif choice == '6':
-            print("not implemented yet")
-        elif choice == '7':
-            print("not implemented yet")  
+            delete_class() 
         elif choice == '0':
             return
         else:

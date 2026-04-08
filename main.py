@@ -2,13 +2,15 @@ import menus.student_menu as student_menu
 import menus.document_menu as document_menu
 import menus.class_menu as class_menu
 import menus.professor_menu as professor_menu
+import menus.enrollment_menu as enrollment_menu
 
 def display_main_menu():
     print("~~~~~~~~~~Main Menu~~~~~~~~~~")
     print("1. View the professor menu")
     print("2. View the class menu")
     print("3. View the student menu")
-    print("4. View the document generation menu")
+    print("4. View the enrollment menu")
+    print("5. View the document generation menu")
     print("0. Exit")
 
 
@@ -23,6 +25,8 @@ while True:
     elif choice == '3':
         student_menu.student_menu()
     elif choice == '4':
+        enrollment_menu.enrollment_menu()
+    elif choice == '5':
         document_menu.document_menu()
     elif choice == '0':
         exit_choice = input("Are you sure you want to exit? y/n : ")

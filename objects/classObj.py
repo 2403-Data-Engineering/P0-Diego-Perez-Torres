@@ -4,4 +4,4 @@ from dataclasses import dataclass
 class Class:
     primary_key: int
     class_name: str
-    assigned_professor : str
+    assigned_professor : int
