@@ -1,4 +1,4 @@
-import db_connect_manager as db
+import database.db_connect_manager as db
 from mysql.connector import Error
   
   

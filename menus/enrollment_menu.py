@@ -3,9 +3,10 @@ def display_enrollment_menu():
     print("1. Enroll a student to a class")
     print("2. Drop a student from a class")
     print("3. View all students in a specific class")
+    print("4. View all classes a student is enrolled in")
     print("0. Go back to previous menu")
 
-def class_menu():
+def enrollement_menu():
     while True:
         display_enrollment_menu()
         choice = input("Please enter your choice: ").strip()
@@ -16,6 +17,8 @@ def class_menu():
             print("not implemented")
         elif choice == '3':
             print("not implemented")
+        elif choice == '4':
+            print()
         elif choice == '0':
             return
         else:

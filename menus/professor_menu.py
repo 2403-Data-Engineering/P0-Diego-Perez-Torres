@@ -1,4 +1,4 @@
-import db_professor_manager as dbp
+import database.db_professor_manager as dbp
 
 def delete_professor():
     while True:

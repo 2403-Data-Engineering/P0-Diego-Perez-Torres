@@ -1,20 +1,17 @@
-import objects.classObj as classObj
-import db_class_manager as dbc
-dummyClass = classObj.Class(1,"Biology 101","billy bob")
-classes = [dummyClass]
+import database.db_class_manager as dbc
 
 def delete_class():
     while True:
         #add testing for existing/non-existing ids
         try:
-            class_id_choice = int(input("Please enter a valid ID: "))
+            class_id_choice = int(input("Please enter a valid class ID: "))
         except ValueError:
             print("Not a valid ID.")
             break
         
         delete_choice = input("Are you sure you want to delete this class? y/n : ")
         if delete_choice == 'y':
-            del classes[class_id_choice-1]
+            dbc.delete_class_by_id(class_id_choice)
             print("Class deleted.")
         elif delete_choice == 'n':
             print("Deletion cancelled. \n")
@@ -25,18 +22,14 @@ def delete_class():
 def update_class_data(id: int):
     class_name = input("What is the class's name?: ").strip()
     professor_id = input("What is the professor's ID?: ").strip()
-    dbc.update_class_by_id(class_name,professor_id)
+    dbc.update_class_by_id(id,class_name,professor_id)
 
 def update_class():
     while True:
         #add testing for existing/non-existing ids
         try:
-            class_id_choice = int(input("Please enter a valid ID: "))
+            class_id_choice = int(input("Please enter a valid class ID: "))
         except ValueError:
-            print("Not a valid ID.")
-            break
-        
-        if class_id_choice < 1 or class_id_choice > len(classes):
             print("Not a valid ID.")
             break
         
