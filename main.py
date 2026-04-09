@@ -13,7 +13,6 @@ def display_main_menu():
     print("5. View the document generation menu")
     print("0. Exit")
 
-
 while True:
     display_main_menu()
     choice = input("Please enter your choice: ").strip()

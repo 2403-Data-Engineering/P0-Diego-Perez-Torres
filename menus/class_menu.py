@@ -2,7 +2,6 @@ import database.db_class_manager as dbc
 
 def delete_class():
     while True:
-        #add testing for existing/non-existing ids
         try:
             class_id_choice = int(input("Please enter a valid class ID: "))
         except ValueError:
@@ -26,7 +25,6 @@ def update_class_data(id: int):
 
 def update_class():
     while True:
-        #add testing for existing/non-existing ids
         try:
             class_id_choice = int(input("Please enter a valid class ID: "))
         except ValueError:

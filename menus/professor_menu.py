@@ -2,7 +2,6 @@ import database.db_professor_manager as dbp
 
 def delete_professor():
     while True:
-        #add testing for existing/non-existing ids
         try:
             professor_id_choice = int(input("Please enter a valid ID: "))
         except ValueError:
@@ -29,7 +28,6 @@ def update_professor_data(id: int):
 
 def update_professor():
     while True:
-        #add testing for existing/non-existing ids
         try:
             professor_id_choice = int(input("Please enter a valid ID: "))
         except ValueError:

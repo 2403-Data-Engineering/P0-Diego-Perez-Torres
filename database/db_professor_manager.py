@@ -4,11 +4,31 @@ from mysql.connector import Error
   
 def delete_professor_by_id(id: int) -> None:
     conn = db.get_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("DELETE FROM Professors WHERE prof_ID = %s",(id,))
-    conn.commit()
-    cursor.close()
-    conn.close()
+    try:
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT prof_ID FROM Professors WHERE prof_ID = %s", (id,))
+        if cursor.fetchone() is None:
+            print(f"No professor found with ID {id}.")
+            return
+
+        cursor.execute("SELECT class_id FROM Classes WHERE professor_id = %s", (id,))
+        assigned_classes = cursor.fetchall()
+        if assigned_classes:
+            print(f"Cannot delete — professor is assigned to {len(assigned_classes)} class(es):")
+            for c in assigned_classes:
+                print(f"  - Class ID: {c['class_id']}")
+            print("Please reassign or delete those classes first.")
+            return
+
+        cursor.execute("DELETE FROM Professors WHERE prof_ID = %s", (id,))
+        print("Professor deleted.")
+    except Exception as e:
+        print(f"Error deleting professor: {e}")
+        conn.rollback()
+    finally:
+        conn.commit()
+        cursor.close()
+        conn.close()
                         
 def update_professor_by_id(id: int,fn: str,ln: str, dpt:str, em:str) -> None:
     conn = db.get_connection()

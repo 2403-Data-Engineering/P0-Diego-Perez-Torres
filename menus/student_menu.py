@@ -2,7 +2,6 @@ import database.db_student_manager as dbs
 
 def delete_student():
     while True:
-        #add testing for existing/non-existing ids
         try:
             student_id_choice = int(input("Please enter a valid ID: "))
         except ValueError:
@@ -30,7 +29,6 @@ def update_student_data(id: int):
     
 def update_student():
     while True:
-        #add testing for existing/non-existing ids
         try:
             student_id_choice = int(input("Please enter a valid ID: "))
         except ValueError:
