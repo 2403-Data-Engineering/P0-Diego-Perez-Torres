@@ -8,6 +8,8 @@ def document_menu():
         display_document_menu()
         choice = input("Please enter your choice: ").strip()
 
+        #Was trying to implement it but main couldn't find the directory of anything after a certain point,
+        #so a working version was cloned.
         if choice == '1':
             print("not implemented yet")
         elif choice == '2':
